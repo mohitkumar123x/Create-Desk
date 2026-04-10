@@ -14,6 +14,12 @@ CreateDesk is a modern, professional full-stack platform that leverages AI to pr
 | :---: | :---: |
 | ![Tool Interface](https://via.placeholder.com/800x450?text=AI+Tool+Interface) | ![Image Gen](https://via.placeholder.com/800x450?text=Image+Generation) |
 
+## 🎥 Demo Video
+
+<video src="Demo_vedio/DEMO.webm" controls width="100%"></video>
+
+[Download Demo Video](Demo_vedio/DEMO.webm)
+
 ---
 
 ## 🚀 Tech Stack
