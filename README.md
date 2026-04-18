@@ -130,5 +130,24 @@ The `docker-compose.yml` is currently set up for a development-ready environment
 
 ---
 
+## ☁️ Deploy on Render (Docker)
+
+This repo includes a Render Blueprint file: `render.yaml`.
+
+1. Push this repository to GitHub.
+2. In Render, create a **Blueprint** and select this repository.
+3. Render will create two web services:
+   - `createdesk-backend` (from `backend/Dockerfile`)
+   - `createdesk-frontend` (from `frontend/Dockerfile`)
+4. Set environment variables in Render:
+   - Backend: `CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY`, `CLOUDINARY_*`, `OPENAI_API_KEY`, `DATABASE_URL`, `FRONTEND_URL`
+   - Frontend: `VITE_BASE_URL`, `VITE_CLERK_PUBLISHABLE_KEY`
+5. Set:
+   - `FRONTEND_URL` to your deployed frontend URL
+   - `VITE_BASE_URL` to your deployed backend URL (for example `https://createdesk-backend.onrender.com`)
+6. Redeploy both services after setting variables.
+
+---
+
 ## 📝 License
 This project is licensed under the ISC License.

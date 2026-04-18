@@ -26,11 +26,11 @@ FROM nginx:stable-alpine AS production-stage
 # Copy the build output from the build-stage to the Nginx html directory
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 
-# Copy custom nginx config if you have one, otherwise use default
-# COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Use a production nginx config suitable for Render
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose port 80
-EXPOSE 80
+# Render routes traffic to the internal service port 10000
+EXPOSE 10000
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]

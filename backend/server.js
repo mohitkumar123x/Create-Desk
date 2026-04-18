@@ -8,9 +8,22 @@ import userRouter from './routes/userRoutes.js';
 
 const app = express()
 
+const allowedOrigins = (process.env.FRONTEND_URL || '')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 await connectCloudinary()
 
-app.use(cors())
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow server-to-server requests and localhost development.
+    if (!origin || origin.includes('localhost') || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
+}))
 app.use(express.json())
 app.use(clerkMiddleware())
 
